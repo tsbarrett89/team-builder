@@ -1,4 +1,31 @@
 import React, { useState } from "react";
+import styled from 'styled-components';
+
+const FormArea = styled.form `
+    background-color: #468054;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin-top: 3%;
+`
+const InputAreas = styled.div `
+    margin: 5% auto;
+    display: flex;
+    justify-content: space-evenly;
+`
+
+const Labels = styled.label `
+    color: white;
+    margin-right: 4%;
+`
+
+const SubmitButton = styled.button `
+    border-radius: 4px;
+    border: 1px rounded black;
+    margin: 1% auto;
+
+`
 
 const Forms = props => {
   const [member, setMember] = useState({
@@ -18,8 +45,9 @@ const Forms = props => {
   };
 
   return (
-    <form onSubmit={submitForm}>
-      <label htmlFor="name">Name</label>
+    <FormArea onSubmit={submitForm}>
+      <InputAreas>
+      <Labels htmlFor="name">Name</Labels>
       <input
         name="name"
         id="name"
@@ -28,15 +56,19 @@ const Forms = props => {
         onChange={changeHandler}
         value={member.name}
       />
-      <label htmlFor="email">Email</label>
+      </InputAreas>
+      <InputAreas>
+      <Labels htmlFor="email">Email</Labels>
       <input
         name="email"
         id="email"
-        placeHolder="Type your note here"
+        placeHolder="email"
         onChange={changeHandler}
         value={member.email}
       />
-      <label htmlFor="role">Role</label>
+      </InputAreas>
+      <InputAreas>
+      <Labels htmlFor="role">Role</Labels>
       <input
         name="role"
         id="role"
@@ -45,8 +77,9 @@ const Forms = props => {
         onChange={changeHandler}
         value={member.role}
         />
-      <button type="submit">Add Member</button>
-    </form>
+        </InputAreas>
+      <SubmitButton type="submit">Add Member</SubmitButton>
+    </FormArea>
   );
 };
 
